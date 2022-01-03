@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko"> <!--여는 태그-->
+    <head> <!--html 문서에 대한 부가적인 정보(화면에 안 보임)-->
+        <!--meta: 문서에 대한 정보 나타내는 태그-->
+        <meta charset="utf-8" /> <!--빈 태그: 여는 태그와 닫는 태그 사이 넣을 다른 컨텐츠 없는 경우 <태그 /> 가능-->
+        <title>네이버</title>
+        <!--link rel & type: favicon이라고 알려줌, href: 파일의 경로-->
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?1" /> <!-- ./: 현재 폴더, /: 프로젝트 최상위 폴더-->
+    </head>
+    <body> <!--화면 담당(즐겨찾기 아래부터)-->
+        <!--heading 태그: 중요도 따라 h1~h6까지(크기 차이)-->
+        <h1>
+            <a href="http://www.naver.com">네이버</a> <!--a 태그: 링크 표현-->
+            <!--href: 태그만으로 설명 안 되는 부분은 뒤에 부가정보(속성(attribute)) 붙임
+            ex) rel="", type=""-->
+        </h1>
+        <h2>검색창</h2>
+        <fieldset> <!--네모박스-->
+            <legend>검색</legend> <!--범례-->
+            <input /> <!--대표적으로 안에 컨텐츠 x, 입력창 생김, 비슷한 기능 textarea: 긴 글 쓸 때-->
+            <!--
+                <input type=" ">에서 " " 안에 들어가는 것들
+                checkbox: 네모박스
+                radio: 동그라미, 뒤에 name="group" 붙이면 다중택일 가능
+            -->
+            <button>검색</button> <!--클릭 되는 버튼: 기본적으로 커서 올리면 화살표지만 css로 손가락으로 바꿔주는 경우도 많음-->
+        </fieldset>
+        <ul> <!--unordered list, ol: ordered list, 숫자 매겨서 나열-->
+            <li>메일</li> <!--list item-->
+            <li>카페</li>
+            <li>블로그</li>
+            <li>지식인</li>
+            <li>쇼핑</li>
+            <li>네이버페이</li>
+            <li>네이버쇼핑</li>
+        </ul>
+        <h2>실시간 검색어</h2>
+        <h3>쿠쿠뉴스</h3>
+        <ol>
+            <li>충격) 내일 공원 산책 예정</li>
+            <li>속보) 하루종일 잠만 자고 싶어</li>
+        </ol>
+        <h3>언론사 목록</h3>
+        <ul>
+            <!--img: 이미지 삽입, src: 파일 위치, alt: 설명(시각장애인용 스크린리더에 쓰임)-->
+            <li><img src="./TheKoreaHerald.png" alt="TheKoreaHerald" /></li>
+            <li><img src="./TheKoreaTimes.png" alt="TheKoreaTimes" /></li>
+        </ul>
+        <!--i: 글자 기울임, b: 굵은 글씨, span: 텍스트 감싸주는 태그(얇은 글씨)-->
+        <h3>로그인</h3>
+        <h3>뉴스</h3>
+        <h3>법률</h3>
+        <h3>쇼핑</h3>
+
+    </body>
+</html> <!--닫는 태그-->
