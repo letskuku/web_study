@@ -1,0 +1,125 @@
+/*선택자(selector): html 태그 선택*/
+
+/*css의 *: 모든 태그*/
+* {
+    box-sizing: border-box; /*border 기준으로 width, height 계산*/
+}
+
+/*
+    css의 .: class
+    class: id와 마찬가지로 구별해주는 역할
+    id와의 차이점?
+    -id: 고유한 것 ex) <div id="header-search"> => header-search는 이 div만 가질 수 있음
+    -class: 원하는 곳 어디에든 넣으면 됨 => 여러 번 사용 가능
+    +) 하나의 태그에 여러 class 적용도 가능 ex) class="blind sleep rest" => 띄어쓰기로 구분
+*/
+.blind { /*화면에 안 보이되 스크린리더에는 읽히고 싶은 경우*/
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+/*
+    css의 #: html의 id 속성
+    여러 태그에 동시 적용? ,와 함께 추가
+    => div#header-center, div#letskuku {}
+    div 태그는 많이 쓰므로 생략 가능: #header-center{}
+    => div 외에는 적어야 함
+*/
+#header-center {
+    margin: 0 auto;
+    width: 1080px; /*픽셀은 상대적인 길이임, 모니터의 픽셀 알아야함*/
+}
+
+#header-search a {
+    text-decoration: none; /*a 태그에서 밑줄 없애줌*/
+}
+
+/*
+    >로 자식 선택(이미 있는 id에서 h1 찾기)
+    그냥 h1에 id 속성 사용할 수도 있음(h1 직접 선택)
+
+    자손 선택자: 한칸 띄어쓰기만 함, 자식도 자손이므로 자식 선택 시 > 빼도 됨
+    ex) div#header-center h1 {}
+*/
+#header-search h1 {
+    width: 198px;
+    height: 48px;
+    display: inline-block;
+    /*
+    background-image: url(./sp_search.png);
+    background-position: -4px -10px; => 첫번째꺼 +: 오른쪽, -: 왼쪽, 두번째꺼 +: 아래쪽, -:위쪽
+    background-repeat: no-repeat; => 공간 넓으면 채우기 위해 이미지 반복하는 것 막음
+    image, position, repeat 한 번에 쓰기 가능
+    */
+    background: url(./sp_search.png) -4px -10px no-repeat;
+    /*
+    text-indent: 100%; 글자 들여쓰기, 100%: 주어진 공간 바깥으로 나감(안 보이게 하려면 overflow: hidden;)
+    overflow: hidden;
+    */
+    vertical-align: middle; /*정렬 맞추기, display가 inline, inline-block이어야만 적용*/
+}
+
+/*
+    display: block; 전체 너비 다 차지
+    margin: 경계, 이 안으로는 들어갈 수 없음(억지로 태그 밀어넣는 방법 있긴 함)
+    display: inline-block; margin 없애기
+    inline: 컨텐츠 너비만 차지, inline-block: 너비, 높이 지정 가능
+*/
+#header-search h1 span {
+    display: none;
+}
+
+#header-search h2 {
+    display: none; /*화면에 안 보임, 스크린 리더도 못 읽음*/
+}
+
+#header-search fieldset {
+    margin-left: 20px;
+    /*
+    padding-top: 12px;
+    padding-right: 0;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    */
+    padding: 12px 0 12px 10px;
+    width: 521px;
+    height: 49px;
+    display: inline-block;
+    /*
+    상하좌우 모두 동일한 경우 한 번에 쓰기 가능
+    2px: 굵기
+    #03cf5d: hex 표기법(두 숫자씩 R/G/B)
+    +)유명한 색은 글자로 써도 가능 ex) red, yellow, blue
+      RGB로 적고 싶으면 RGB(숫자, 숫자, 숫자)
+    */
+    border: 2px solid #03cf5d;
+    vertical-align: middle;
+}
+
+#header-search fieldset input {
+    border: none; /*보더 사라짐*/
+    padding: 0; /*패딩 사라짐*/
+    outline: none; /*outline: input 태그 대한 브라우저 기본 동작*/
+}
+
+#header-search fieldset button {
+    width: 49px;
+    height: 49px;
+    border: none;
+    padding: 0;
+    background: #03cf5d;
+}
+
+#search-image {
+    background-image: url(./sp_search.png);
+    background-position: -3px -60px; /*삽입된 이미지 위치 조정*/
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    display: inline-block; /*높이, 너비 바꾸기 위해*/
+    margin: 14px; /*가운데 정렬*/
+}
