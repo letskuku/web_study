@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko"> <!--여는 태그-->
+    <head> <!--html 문서에 대한 부가적인 정보(화면에 안 보임)-->
+        <!--meta: 문서에 대한 정보 나타내는 태그-->
+        <meta charset="utf-8" /> <!--빈 태그: 여는 태그와 닫는 태그 사이 넣을 다른 컨텐츠 없는 경우 <태그 /> 가능-->
+        <title>네이버</title>
+        <!--link rel & type: favicon이라고 알려줌, href: 파일의 경로-->
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?1" /> <!-- ./: 현재 폴더, /: 프로젝트 최상위 폴더-->
+        <link rel="stylesheet" href="./naver.css"> <!--html 파일에 css 존재 알려줌, 같은 link 태그여도 rel로 역할 구분-->
+    </head>
+    <body> <!--화면 담당(즐겨찾기 아래부터)-->
+        <!--
+            div: 구역 나눔, 가로줄 전체 차지(너비가 100%)
+            가장 많이 쓰지만 구별 안 되는 단점 있음, 옛날 방법: 속성 id="" 붙여줌 ex) <div id="footer">
+            => 많이 쓰이는 것들은 아예 태그로 만듦 ex) header, nav, main, footer, article, aside, figure, ...
+                => 시맨틱 태그: div 태그인데(역할 동일) 이름이 붙어있는 태그
+                    => 의미 가지고 있기 때문에 제약 있는 경우 있음(이런 제약 사항을 웹 표준이라고 함)
+                        ex) main은 메인 컨텐츠이므로 딱 한 번 써야함
+        -->
+        <header> <!--header: 제일 눈에 잘 띄고 큰 부분 / 제일 윗부분-->
+            <!--
+                가운데 정렬용 div
+                가운데 정렬은 css 사용, 가장 간단한 방법은 style 속성 사용
+                => <div style="margin: 0 auto;">로 div 태그가 header 기준 가운데 정렬됨
+                    => div 내부 컨텐츠가 가운데 정렬되는 것이 아니라 구역 자체가 가운데 정렬됨
+
+                css 문법: 속성명:속성값, 여러 개일 때 구별은 ;으로
+                인라인 스타일(권장 x): html 파일에 css 사용 ex) style="margin: 0 auto; width: 1080px;"
+            -->
+            <div class="center-align">
+                <div id="header-top">
+                    <span>네이버를 시작페이지로 > | </span> <!--span 태그의 display는 inline-->
+                    <span>쥬니어네이버 | </span>
+                    <span>해피빈</span>
+                </div>
+                <div id="header-search">
+                    <!--heading 태그: 중요도 따라 h1~h6까지(크기 차이)-->
+                    <a href="http://www.naver.com"> <!--a 태그: 링크 표현-->
+                        <h1>
+                            <span>네이버</span>                        
+                        <!--href: 태그만으로 설명 안 되는 부분은 뒤에 부가정보(속성(attribute)) 붙임
+                        ex) rel="", type=""-->
+                        </h1>
+                    </a>
+                    <h2 class="blind">검색창</h2>
+                    <fieldset> <!--네모박스-->
+                        <legend class="blind">검색</legend> <!--범례-->
+                        <input /> <!--대표적으로 안에 컨텐츠 x, 입력창 생김, 비슷한 기능 textarea: 긴 글 쓸 때-->
+                        <!--
+                            <input type=" ">에서 " " 안에 들어가는 것들
+                            checkbox: 네모박스
+                            radio: 동그라미, 뒤에 name="group" 붙이면 다중택일 가능
+                        -->
+                        <span id="search-keyboard"></span>
+                        <span id="search-history"></span>
+                        <button>
+                            <span class="blind">검색</span>
+                            <span id="search-image"></span> <!--이미지용 span-->
+                        </button> <!--클릭 되는 버튼: 기본적으로 커서 올리면 화살표지만 css로 손가락으로 바꿔주는 경우도 많음-->
+                    </fieldset>
+                </div>
+            </div>
+        </header>
+        <nav> <!--nav: 메뉴 나열된 부분-->
+            <div class="center-align relative">
+                <div id="search-ranking">
+                    <h2 class="blind">실시간 검색어</h2>
+                    <span id="rank-number">1</span>
+                    <span id="rank-title">쿠쿠</span>
+                </div>
+                <ul> <!--unordered list, ol: ordered list, 숫자 매겨서 나열-->
+                    <li><a href=""><span></span><span class="blind">메일</span></a></li> <!--li 태그: list item-->
+                    <li><a href=""><span></span><span class="blind">카페</span></a></li>
+                    <li><a href=""><span></span><span class="blind">블로그</span></a></li>
+                    <li><a href=""><span></span><span class="blind">지식인</span></a></li>
+                    <li><a href=""><span></span><span class="blind">쇼핑</span></a></li>
+                    <li><a href=""><span></span><span class="blind">네이버페이</span></a></li>
+                    <li><a href=""><span></span><span class="blind">네이버TV</span></a></li>
+                    <li><a href=""><span></span><span class="blind">사전</span></a></li>
+                    <li><a href=""><span></span><span class="blind">뉴스</span></a></li>
+                    <li><a href=""><span></span><span class="blind">증권</span></a></li>
+                    <li><a href=""><span></span><span class="blind">부동산</span></a></li>
+                    <li><a href=""><span></span><span class="blind">지도</span></a></li>
+                    <li><a href=""><span></span><span class="blind">영화</span></a></li>
+                    <li><a href=""><span></span><span class="blind">뮤직</span></a></li>
+                    <li><a href=""><span></span><span class="blind">책</span></a></li>
+                    <li><a href=""><span></span><span class="blind">웹툰</span></a></li>
+                </ul>
+                <div class="nav-divider"></div>
+                <ul>
+                    <li class="more"><a href=""><span></span><span class="blind">더보기</span></a></li>
+                </ul>
+            </div>
+        </nav>
+        <main> <!--main: 메인 컨텐츠 나열되어있는 부분-->
+            <h3>쿠쿠뉴스</h3>
+            <ol>
+                <li>충격) 내일 공원 산책 예정</li>
+                <li>속보) 하루종일 잠만 자고 싶어</li>
+            </ol>
+            <h3>언론사 목록</h3>
+            <ul>
+                <!--img: 이미지 삽입, src: 파일 위치, alt: 설명(시각장애인용 스크린리더에 쓰임)-->
+                <li><img src="./TheKoreaHerald.png" alt="TheKoreaHerald" /></li>
+                <li><img src="./TheKoreaTimes.png" alt="TheKoreaTimes" /></li>
+            </ul>
+            <!--i: 글자 기울임, b: 굵은 글씨, span: 텍스트 감싸주는 태그(얇은 글씨)-->
+            <h3>로그인</h3>
+            <h3>뉴스</h3>
+            <h3>법률</h3>
+            <h3>쇼핑</h3>
+        </main>
+        <footer> <!--footer: 부가정보 있는 부분-->
+            <div>공지사항</div>
+            <div>Creators</div>
+            <div>회사소개</div>
+        </footer>
+    </body>
+</html> <!--닫는 태그-->
