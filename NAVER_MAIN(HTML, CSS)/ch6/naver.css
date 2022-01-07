@@ -1,0 +1,476 @@
+/*선택자(selector): html 태그 선택*/
+
+html, body {
+    margin: 0;
+    padding: 0;
+    /*글씨체, 앞에서부터 우선순위 적용(sans-serif, serif는 모든 컴퓨터에 다 깔려있다고 보면 됨)*/
+    font-family: -apple-system,BlinkMacSystemFont,"Malgun Gothic","맑은 고딕",helvetica,"Apple SD Gothic Neo",sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+/*css의 *: 모든 태그*/
+* {
+    box-sizing: border-box; /*border 기준으로 width, height 계산*/
+}
+
+/*
+    css의 .: class
+    class: id와 마찬가지로 구별해주는 역할
+    id와의 차이점?
+    -id: 고유한 것 ex) <div id="header-search"> => header-search는 이 div만 가질 수 있음
+    -class: 원하는 곳 어디에든 넣으면 됨 => 여러 번 사용 가능
+    +) 하나의 태그에 여러 class 적용도 가능 ex) class="blind sleep rest" => 띄어쓰기로 구분
+*/
+.inline-block {
+    display: inline-block;
+}
+
+.blind { /*화면에 안 보이되 스크린리더에는 읽히고 싶은 경우*/
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+.relative {
+    position: relative;
+}
+
+.center-align {
+    margin: 0 auto;
+    width: 1080px; /*픽셀은 상대적인 길이임, 모니터의 픽셀 알아야함*/
+}
+
+header {
+    height: 170px;
+}
+
+/*
+    css의 #: html의 id 속성
+    여러 태그에 동시 적용? ,와 함께 추가
+    => div#header-center, div#letskuku {}
+    div 태그는 많이 쓰므로 생략 가능: #header-center{}
+    => div 외에는 적어야 함
+*/
+#header-search a {
+    text-decoration: none; /*a 태그에서 밑줄 없애줌*/
+}
+
+/*
+    >로 자식 선택(이미 있는 id에서 h1 찾기)
+    그냥 h1에 id 속성 사용할 수도 있음(h1 직접 선택)
+
+    자손 선택자: 한칸 띄어쓰기만 함, 자식도 자손이므로 자식 선택 시 > 빼도 됨
+    ex) div#header-center h1 {}
+*/
+#header-top {
+    float: right; /*오른쪽 정렬, 형제 태그가 감싼 것처럼 보임*/
+    margin-top: 8px;
+}
+
+#header-top span {
+    color: #888; /*원래 #888888인데 두글자씩 묶어서 줄일 수 있음 ex) #aabbcc => #abc*/
+    letter-spacing: -1px; /*글자 간격(자간)*/
+    font-size: 11px; /*글자 크기*/
+    line-height: 22px; /*글자 높이(너무 적게 주면 여러 줄일 때 위아래로 겹침)*/
+}
+
+#header-search {
+    clear: both; /*형제 태그와 영역 안 겹치기 위해*/
+    padding-top: 45px;
+}
+
+#header-search h1 {
+    width: 198px;
+    height: 48px;
+    display: inline-block;
+    /*
+    background-image: url(./sp_search.png);
+    background-position: -4px -10px; => 첫번째꺼 +: 오른쪽, -: 왼쪽, 두번째꺼 +: 아래쪽, -:위쪽
+    background-repeat: no-repeat; => 공간 넓으면 채우기 위해 이미지 반복하는 것 막음
+    image, position, repeat 한 번에 쓰기 가능
+    */
+    background: url(./sp_search.png) -4px -4px no-repeat;
+    /*
+    text-indent: 100%; 글자 들여쓰기, 100%: 주어진 공간 바깥으로 나감(안 보이게 하려면 overflow: hidden;)
+    overflow: hidden;
+    */
+    vertical-align: middle; /*정렬 맞추기, display가 inline, inline-block이어야만 적용*/
+    position: relative;
+    top: -5px;
+    left: 1px;
+}
+
+/*
+    display: block; 전체 너비 다 차지
+    margin: 경계, 이 안으로는 들어갈 수 없음(억지로 태그 밀어넣는 방법 있긴 함)
+    display: inline-block; margin 없애기
+    inline: 컨텐츠 너비만 차지, inline-block: 너비, 높이 지정 가능
+*/
+#header-search h1 span {
+    display: none;
+}
+
+#header-search h2 {
+    display: none; /*화면에 안 보임, 스크린 리더도 못 읽음*/
+}
+
+#header-search fieldset {
+    margin-left: 18px;
+    /*
+    padding-top: 12px;
+    padding-right: 0;
+    padding-bottom: 12px;
+    padding-left: 10px;
+    */
+    padding: 12px 0 12px 10px;
+    width: 521px;
+    height: 49px;
+    display: inline-block;
+    /*
+    상하좌우 모두 동일한 경우 한 번에 쓰기 가능
+    2px: 굵기
+    #03cf5d: hex 표기법(두 숫자씩 R/G/B)
+    +)유명한 색은 글자로 써도 가능 ex) red, yellow, blue
+      RGB로 적고 싶으면 RGB(숫자, 숫자, 숫자)
+    */
+    border: 2px solid #03cf5d;
+    vertical-align: middle;
+    position: relative;
+}
+
+#header-search fieldset input {
+    border: none; /*보더 사라짐*/
+    padding: 0; /*패딩 사라짐*/
+    outline: none; /*outline: input 태그 대한 브라우저 기본 동작*/
+    vertical-align: top;
+    width: 395px;
+    height: 23px;
+}
+
+#header-search fieldset button {
+    width: 49px;
+    height: 49px;
+    border: none;
+    padding: 0;
+    background: #03cf5d;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+}
+
+#search-keyboard {
+    background-image: url(https://s.pstatic.net/static/www/img/uit/2019/sp_search.svg);
+    background-repeat: no-repeat;
+    background-position: -33px -60px;
+    width: 19px;
+    height: 11px;
+    display: inline-block;
+    margin: 0 6px;
+    vertical-align: middle;
+}
+
+#search-history {
+    background-image: url(https://s.pstatic.net/static/www/img/uit/2019/sp_search.svg);
+    background-repeat: no-repeat;
+    background-position: -87px -60px;
+    width: 9px;
+    height: 4px;
+    display: inline-block;
+    margin: 0 6px; /*위아래 / 우좌끼리 같으면 묶을 수 있음*/
+    vertical-align: middle; /*inline-block이나 inline 옆에 붙어있는 애들끼리 정렬*/
+}
+
+#search-image {
+    background-image: url(./sp_search.png);
+    background-position: -3px -60px; /*삽입된 이미지 위치 조정*/
+    background-repeat: no-repeat;
+    width: 21px;
+    height: 21px;
+    display: inline-block; /*높이, 너비 바꾸기 위해*/
+    margin: 14px; /*가운데 정렬*/
+}
+
+nav {
+    height: 46px;
+    border-top: 1px solid #f1f3f6;
+    border-bottom: 1px solid #d1d8e4;
+}
+
+nav ul {
+    display: inline-block;
+    list-style: none; /*리스트의 목록 표시(.) 없애기*/
+    margin: 0;
+    padding: 16px 0 0 4px;
+}
+
+nav li {
+    display: inline-block; /*메일, 카페, 블로그, ... 옆으로 나열*/
+}
+
+nav li span:first-child { /*nav의 모든 li의 첫번째 span에 공통으로 적용*/
+    height: 16px;
+    display: inline-block;
+    background-image: url(https://s.pstatic.net/static/www/img/uit/2019/sp_nav.png);
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+
+nav li:first-child span:first-child {
+    width: 25px;
+    background-position: 0 -285px;
+    margin-left: 0; /*margin-left의 예외*/
+}
+
+nav li:nth-child(2) span:first-child {
+    width: 27px;
+    background-position: -279px -52px;
+}
+
+nav li:nth-child(3) span:first-child {
+    width: 40px;
+    background-position: -100px -182px;
+}
+
+nav li:nth-child(4) span:first-child {
+    width: 40px;
+    background-position: -101px -156px;
+}
+
+nav li:nth-child(5) span:first-child {
+    width: 26px;
+    background-position: -279px -156px;
+}
+
+nav li:nth-child(6) span:first-child {
+    width: 25px;
+    background-position: -70px -285px;
+}
+
+nav li:nth-child(7) span:first-child {
+    width: 35px;
+    background-position: -125px -130px;
+}
+
+nav li:nth-child(8) span:first-child {
+    width: 26px;
+    background-position: -279px -208px;
+}
+
+nav li:nth-child(9) span:first-child {
+    width: 26px;
+    background-position: -128px -104px;
+}
+
+nav li:nth-child(10) span:first-child {
+    width: 26px;
+    background-position: -36px -259px;
+}
+
+nav li:nth-child(11) span:first-child {
+    width: 39px;
+    background-position: -151px -156px;
+}
+
+nav li:nth-child(12) span:first-child {
+    width: 26px;
+    background-position: -279px -130px;
+}
+
+nav li:nth-child(13) span:first-child {
+    width: 26px;
+    background-position: -234px -233px;
+}
+
+nav li:nth-child(14) span:first-child {
+    width: 26px;
+    background-position: -72px -259px;
+}
+
+nav li:nth-child(15) span:first-child {
+    width: 13px;
+    background-position: -140px -78px;
+}
+
+nav li:nth-child(16) span:first-child {
+    width: 26px;
+    background-position: -279px 0;
+}
+
+nav li.more:first-child span:first-child {
+    width: 55px;
+    background-position: 0 -104px;
+}
+
+.nav-divider {
+    display: inline-block;
+    margin: 18px 16px 0;
+    width: 1px;
+    height: 14px;
+    background: #ebeef3;
+}
+
+#search-ranking {
+    position: absolute;
+    top: 16px;
+    right: 100px;
+}
+
+#rank-number {
+    margin-top: -9px;
+    color: #00ab33;
+    font-size: 16px;
+}
+
+main {
+    background-color: #f2f4f7;
+    display: inline-block; /*마진 상쇄 극복*/
+    width: 100%;
+}
+
+#main-centered {
+    padding: 8px 10px;
+    width: 1100px;
+}
+
+#main-first-block {
+    display: inline-block;
+}
+
+#main-ad {
+    width: 740px;
+    height: 120px;
+    background: #555;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    float: left; /*main-login과의 inline-block 문제 해결*/
+}
+
+#main-login {
+    width: 332px;
+    height: 120px;
+    vertical-align: top;
+    background-color: white;
+    margin-bottom: 8px;
+    float: left;
+}
+
+#main-second-block .inline-block:first-child {
+    width: 740px;
+}
+
+#main-second-block .inline-block:last-child {
+    width: 332px;
+    vertical-align: top;
+}
+
+#main-kuku {
+    display: inline-block;
+    width: 740px;
+    height: 46px;
+    background-color: white;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
+#main-kuku h3,
+#main-kuku ol {
+    display: inline-block;
+}
+
+#main-newsstand {
+    display: inline-block;
+    width: 740px;
+    height: 246px;
+    background-color: white;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
+#main-newsstand h3 {
+    height: 45px;
+    border-bottom: 1px solid #ebeef3;
+}
+
+#main-newsstand ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#main-newsstand li {
+    float: left;
+    width: 123px;
+    height: 67px;
+    border-right: 1px solid #f1f3f6;
+    border-bottom: 1px solid #f1f3f6;
+    text-align: center; /*내부 컨텐츠 가운데 정렬*/
+}
+
+#main-newsstand li img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+}
+
+#main-weather {
+    display: inline-block;
+    width: 332px;
+    height: 142px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+
+#main-second-ad {
+    display: inline-block;
+    width: 332px;
+    height: 150px;
+    background: #555;
+    margin-bottom: 8px;
+}
+
+#main-third-block,
+#main-fourth-block {
+    display: inline-block;
+}
+
+#main-category {
+    float: left;
+    width: 740px;
+    height: 837px;
+    background-color: white;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
+#main-shopping {
+    float: left;
+    width: 332px;
+    height: 837px;
+    background-color: white;
+    margin-bottom: 8px;
+}
+
+#main-event {
+    float: left;
+    width: 740px;
+    height: 130px;
+    background-color: white;
+    vertical-align: top;
+    margin-bottom: 8px;
+    margin-right: 8px;
+}
+
+#main-third-ad {
+    float: left;
+    width: 332px;
+    height: 130px;
+    background-color: #555;
+    margin-bottom: 8px;
+}
